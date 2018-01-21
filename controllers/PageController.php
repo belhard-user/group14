@@ -14,11 +14,7 @@ class PageController
 
     public function people()
     {
-        /** @var mysqli $connection */
-        $connection = App::get('connection');
-        $sql = 'SELECT * FROM peoples';
-        $result = $connection->query($sql);
-        $names = $result->fetch_all(MYSQLI_ASSOC);
+        $names = App::get('db')->getAll('peoples');
         
         view('peoples', ['names' => $names]);
     }
@@ -30,11 +26,11 @@ class PageController
 
     public function storeUser()
     {
-        /** @var mysqli $connection */
-        $connection = App::get('connection');
         $name = $_POST['name'];
-        $sql = "INSERT INTO peoples(name) VALUES ('$name')";
-        $connection->query($sql);
+
+        App::get('db')->insert('peoples', [
+            'name' => $name,
+        ]);
 
         Request::redirectTo('peoples');
     }
