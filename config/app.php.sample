@@ -1,0 +1,11 @@
+<?php
+
+return [
+    'db' => [
+        'host' => 'localhost',
+        'db_user' => 'root',
+        'db_pwd' => '',
+        'db_database' => 'site'
+    ],
+    'site_name' => 'Test'
+];
