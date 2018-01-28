@@ -4,7 +4,7 @@ require_once "core/bootstrap.php";
 
 try {
     \Core\Kernel::init()->run();
-}catch(Exception $e){
+}catch(\Exception $e){
     switch ($e->getCode()){
         case 404:
             // include 404 page

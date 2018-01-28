@@ -1,3 +1,4 @@
 .idea/
 config/app.php
 vendor/
+compilation_cache/
