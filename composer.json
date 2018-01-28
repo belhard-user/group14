@@ -1,0 +1,12 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Core\\": "Core",
+      "App\\": "Controllers"
+    },
+    "files": ["Core/functions.php"]
+  },
+  "require": {
+    "symfony/var-dumper": "^3.4"
+  }
+}

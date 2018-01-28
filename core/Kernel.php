@@ -1,5 +1,9 @@
 <?php
 
+namespace Core;
+
+use Core\Request;
+
 class Kernel
 {
     protected $routes = [
@@ -31,6 +35,7 @@ class Kernel
 
     protected function callController($class, $method, $args=[])
     {
+        $class = '\App\\' . $class;
         $class = new $class();
         call_user_func_array([$class, $method], $args);
     }

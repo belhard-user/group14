@@ -3,7 +3,7 @@
 require_once "core/bootstrap.php";
 
 try {
-    Kernel::init()->run();
+    \Core\Kernel::init()->run();
 }catch(Exception $e){
     switch ($e->getCode()){
         case 404:
