@@ -1,0 +1,10 @@
+{% extends "layout/main.html.twig" %}
+
+{% block title %}People i like{% endblock %}
+{% block pageTitle %}People i like{% endblock %}
+
+{% block content %}
+    {% for name in names %}
+        <li>{{ name.name|raw }}</li>
+    {% endfor %}
+{% endblock %}

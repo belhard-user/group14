@@ -2,7 +2,9 @@
 
 function view($template, $args = [])
 {
-    extract($args);
+    $twig = \Core\App::get('twig');
 
-    include "views/{$template}.html.php";
+    $template .= '.html.twig';
+
+    echo $twig->render($template, $args);
 }

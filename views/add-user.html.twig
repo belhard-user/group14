@@ -1,0 +1,11 @@
+{% extends "layout/main.html.twig" %}
+
+{% block title %}add user{% endblock %}
+{% block pageTitle %}add user{% endblock %}
+
+{% block content %}
+    <form action="/add-user" method="post">
+        <input type="text" name="name">
+        <input type="submit">
+    </form>
+{% endblock %}
