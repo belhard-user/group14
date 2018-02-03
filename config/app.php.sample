@@ -5,7 +5,10 @@ return [
         'host' => 'localhost',
         'db_user' => 'root',
         'db_pwd' => '',
-        'db_database' => 'site'
+        'db_database' => 'site',
+        'options' => [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]
     ],
     'site_name' => 'Test'
 ];
