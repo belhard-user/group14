@@ -1,12 +1,14 @@
 <?php
 namespace Core\DB;
 
+use PDO;
+
 class QueryBuilder
 {
-    /** @var  mysqli */
+    /** @var  PDO */
     private $db;
 
-    public function __construct($db)
+    public function __construct(PDO $db)
     {
         $this->db = $db;
     }
@@ -18,7 +20,10 @@ class QueryBuilder
             $tableName
         );
         
-        return $this->db->query($sql)->fetch_all(MYSQLI_ASSOC);
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_BOTH);
     }
 
     public function insert(string $tbl_name, array $fields)
@@ -28,9 +33,11 @@ class QueryBuilder
             'INSERT INTO %s (%s) VALUES (%s)',
             $tbl_name,
             implode(',', $fieldsName),
-            '\'' . implode("','", $fields) . "'"
+           trim(str_repeat('?,', count($fieldsName)), ',')
         );
 
-        return $this->db->query($sql);
+        $stmt = $this->db->prepare($sql);
+        
+        return $stmt->execute(array_values($fields));
     }
 }
