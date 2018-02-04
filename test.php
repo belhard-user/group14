@@ -1,13 +1,20 @@
 <?php
-require_once "vendor/autoload.php";
+
+require_once 'vendor/autoload.php';
+
+// 1 */1 * * * * rm -rf /var/logs/*.log
 
 
-$str = 'hello @neo';
-preg_match('/@(?<fullname>\w+)/', $str, $m);
+/*$ii = new InfiniteIterator(new ArrayIterator([1, 2, 3]));
 
-var_dump([1, 2, 3, 4, 5, 6]);
+foreach ($ii as $i){
+    echo $i . "\n";
+    sleep(10);
+}*/
 
-$m = foo(10);
+$sfi = new SplFileInfo('config/app.php');
+
+dump($sfi);
 
 
 
@@ -15,86 +22,145 @@ $m = foo(10);
 
 
 
-function foo($a)
+/*$numbers = range(1, 100);
+$numbers = array_filter($numbers, function($item){
+    return $item % 2 == 0;
+});
+dump($numbers);*/
+/*class Foo extends FilterIterator
 {
-    $a + 2;
+    protected $numbers;
 
-    $tmp = [$a, 2, 5];
 
-    $min = min($tmp);
+    public function __construct()
+    {
+        $this->numbers = range(1, 100);
+        parent::__construct(new ArrayIterator($this->numbers));
+    }
 
-    return $min;
+
+    public function getNumbers()
+    {
+        return $this->numbers;
+    }
+
+    public function accept()
+    {
+        return $this->getInnerIterator()->current() % 2 == 0;
+    }
 }
-// dump($m);
 
-/*$array = [2, 2.2, 5, 4.5];
-$fl_array = preg_grep("/^(\d+)?\.\d+$/", $array);
-dump($fl_array);*/
+$f = new Foo;
+
+foreach($f as $item){
+    echo "$item<br>";
+}*/
 
 
 
-// https://vk.com/doc10903696_208805128?hash=ca3a558dbc4ad29d3f&dl=ec6195707f8368caf8
-//$str = 'hello visit my web site http://onliner.by https://tut.by https://ya.ru';
-// echo preg_replace('@((?:ht|f)tps?://([^.]+)\.\w+)@', '<a href="$1">$2</a>', $str, -1, $c);
-//$result = preg_match_all('@((?:ht|f)tps?://([^.]+)\.\w+)@', $str, $m, PREG_OFFSET_CAPTURE|PREG_SET_ORDER);
-//dump($m);
-/*$str = 'string';
+/*$names = ["neo", 'trinity', 'tank', 'dozer', [1, 2, 3, [10, 20, 30]], ['a', 'b', ['aa', 'bb']]];
 
-dump(
-    preg_split('//', $str, -1, PREG_SPLIT_NO_EMPTY)
-);*/
-// dump($c);
-/*$re = '/php ?[57]/u';
-$str = 'i like php 5';
-preg_match($re, $str, $m);*/
+array_walk_recursive($names, function($item){
+    dump($item);
+});*/
+/*$rai = new RecursiveArrayIterator($names);
+$rii = new RecursiveIteratorIterator($rai);
 
-/*
-zend_extension="%sprogdir%/modules/php/%phpdriver%/ext/php_xdebug.dll"
-xdebug.default_enable = 1
-xdebug.auto_trace = 0
-xdebug.collect_includes = 1
-;xdebug.collect_params = 4
-;xdebug.collect_return = 1
-;xdebug.collect_assignments = 1
-;xdebug.collect_vars = 1
-xdebug.dump.REQUEST = *
-xdebug.dump.SESSION = *
-xdebug.dump.SERVER = REMOTE_ADDR,REQUEST_METHOD
-;xdebug.dump.COOKIE =
-;xdebug.dump.FILES =
-;xdebug.dump.GET =
-;xdebug.dump.POST =
-xdebug.dump_globals = 1
-xdebug.dump_once = 1
-xdebug.dump_undefined = 1
-xdebug.extended_info = 1
-;xdebug.file_link_format = ""
-;xdebug.idekey = ""
-;xdebug.manual_url = "http://www.php.net"
-xdebug.max_nesting_level = 256
-xdebug.overload_var_dump = 1
-;xdebug.profiler_append = 1
-xdebug.profiler_enable = 0
-xdebug.profiler_enable_trigger = 0
-xdebug.profiler_output_dir="%sprogdir%/userdata/temp/xdebug/"
-xdebug.profiler_output_name = "cachegrind.out.%H%R"
-xdebug.remote_autostart = 1
-xdebug.remote_enable = 1
-;xdebug.remote_handler = "dbgp"
-xdebug.remote_host = "localhost"
-;xdebug.remote_log = "none"
-;xdebug.remote_mode = "req"
-xdebug.remote_port = 9000
-;xdebug.scream = 1
-;xdebug.show_exception_trace = 0
-;xdebug.show_local_vars = 1
-;xdebug.show_mem_delta = 1
-;xdebug.trace_format = 1
-;xdebug.trace_options = 1
-xdebug.trace_output_dir = "%sprogdir%/userdata/temp/xdebug/"
-;xdebug.trace_output_name = "trace.%H%R"
-xdebug.var_display_max_children = 256
-;xdebug.var_display_max_data = 1024
-xdebug.var_display_max_depth = 16
-;xdebug.remote_cookie_expire_time = 3600
- */
+foreach($rii as $item) {
+    dump($item);
+}*/
+
+
+
+/*class Foo implements ArrayAccess
+{
+    public $name = 'Neo';
+    public $age = 21;
+    public $bar = 'bar';
+    protected $names = ["neo", 'trinity', 'tank', 'dozer'];
+
+    public function offsetExists($offset)
+    {
+        return true;
+    }
+
+    public function offsetGet($offset)
+    {
+        return $this->$offset;
+    }
+
+    public function offsetSet($offset, $value)
+    {
+        $this->$offset = $value;
+    }
+
+    public function offsetUnset($offset)
+    {
+        // TODO: Implement offsetUnset() method.
+    }
+}
+
+
+$foo = new Foo;
+echo $foo['name'];
+$foo['name'] = 'Vasiliy';
+echo $foo['name'];
+dump($foo);
+implode(',', $foo);
+
+isset($foo['key']); // ->offsetExists
+unset($foo['key']); // ->offsetUnset*/
+
+
+
+
+/*class Foo implements Iterator
+{
+    public $name = 'Neo';
+    public $age = 21;
+    public $bar = 'bar';
+    public $jaz = 'jaz';
+    protected $names = ["neo", 'trinity', 'tank', 'dozer'];
+    public  $cnt;
+
+    public function current()
+    {
+        return $this->names[$this->cnt];
+    }
+
+    public function next()
+    {
+        $this->cnt++;
+    }
+
+    public function key()
+    {
+        return $this->cnt;
+    }
+
+    public function valid()
+    {
+        return $this->cnt < count($this->names);
+    }
+
+    public function rewind()
+    {
+        $this->cnt = 0;
+    }
+}
+
+
+class Bar implements IteratorAggregate
+{
+
+    public function getIterator()
+    {
+        return new Foo();
+    }
+}
+
+$foo = new Bar;
+
+foreach($foo as $k => $v){
+    echo "$k $v<br>";
+}*/
