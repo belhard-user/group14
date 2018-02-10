@@ -2,6 +2,65 @@
 
 require_once 'vendor/autoload.php';
 
+
+dump(spl_classes());
+
+
+/*spl_autoload_register(function($n){
+    echo "First: $n<br>";
+});
+
+spl_autoload_register(function($n){
+    echo "Second: $n<br>";
+});
+
+new AaaaaAAAA;*/
+
+/*class A
+{
+
+}
+
+$a = new A;
+$b = new A;
+$c = new A;
+
+
+$array = new SplObjectStorage();
+
+$array->attach($a, 'Arnold'); // $array[$a] = 'Arnold';
+
+
+echo $array->offsetGet($a);*/
+
+
+
+
+
+
+/*$a = [
+    'db' => [
+        'host' => 'localhost',
+        'db_user' => 'root',
+        'db_pwd' => '',
+        'db_database' => 'site',
+        'options' => [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+        ]
+    ],
+    'site_name' => 'Test',
+    0 => 'asd'
+];
+
+$a = new ArrayObject($a, ArrayObject::ARRAY_AS_PROPS);
+
+print_r( $a->{0});*/
+
+
+/*$sfo = new SplFileObject('test.log');
+
+echo $sfo->fgets(); */
+
 // 1 */1 * * * * rm -rf /var/logs/*.log
 
 
@@ -12,9 +71,10 @@ foreach ($ii as $i){
     sleep(10);
 }*/
 
-$sfi = new SplFileInfo('config/app.php');
+/*$sfi = new SplFileInfo('test.log');
+$s = $sfi->openFile();
 
-dump($sfi);
+echo $s->fgets();*/
 
 
 
